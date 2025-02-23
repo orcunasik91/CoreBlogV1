@@ -1,0 +1,25 @@
+﻿@{ ViewBag.Title = "Blog";}
+@model List<Blog>
+<div class="mainbar">
+    @foreach (Blog article in Model)
+    {
+        <div class="article">
+            <h2><span>@article.Title</span></h2>
+            <div class="clr"></div>
+            <p><span class="date">@article.PublishDate.ToString("dd MMM yyyy")</span> &nbsp;|&nbsp; Etiketler <a href="#">@article.Tags</a></p>
+            <img src="@article.ImageUrl" width="625" height="205" alt="Blog Image" />
+            @{
+                string description = article.Description;
+                string newDescription = description.Length > 150 ? description.Substring(0,150) + "..." : description;
+             }
+            <p>@newDescription</p>
+            <p class="spec">
+                <a asp-controller="Blog" asp-action="Details" asp-route-id="@article.BlogId" class="rm">Daha Fazlası &raquo;</a>
+                <a href="#" class="com"><span>@article.LikeCount</span> Beğeniler</a>
+                <a href="#" class="com"><span>@article.ViewCount</span> Görüntüleme &nbsp;&nbsp;</a>
+                <a href="#" class="com"><span>@article.CommentCount</span> Yorumlar &nbsp;&nbsp;</a>
+            </p>
+        </div>
+    }
+
+</div>
