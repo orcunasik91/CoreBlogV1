@@ -1,0 +1,35 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "İletişim";
+}
+<div class="mainbar">
+    <div class="article">
+        <h2><span>İletişim</span></h2>
+        <div class="clr"></div>
+        <p>Bizimle aşağıdaki form üzerinden iletişime geçebilirsiniz. En kısa süre içerisinde mesajlarınıza dönüş sağlanacaktır.</p>
+    </div>
+    <div class="article">
+        <h2><span>Bize</span> Ulaşın</h2>
+        <div class="clr"></div>
+        <form asp-controller="Blog" asp-action="Contact" method="post" id="sendemail">
+            <ol>
+                <li>
+                    <label asp-for="Name">Ad Soyad (zorunlu)</label>
+                    <input id="name" asp-for="Name" class="text" required/>
+                </li>
+                <li>
+                    <label asp-for="Email">Email (zorunlu)</label>
+                    <input id="email" asp-for="Email" class="text" required/>
+                </li>
+                <li>
+                    <label asp-for="Message">Mesajınız</label>
+                    <textarea id="message" asp-for="Message" rows="8" cols="50"></textarea>
+                </li>
+                <li>
+                    <input type="image" name="imageField" id="imageField" src="/images/submit.gif" class="send" />
+                    <div class="clr"></div>
+                </li>
+            </ol>
+        </form>
+    </div>
+</div>
