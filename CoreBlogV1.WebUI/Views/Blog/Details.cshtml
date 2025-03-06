@@ -9,49 +9,33 @@
         <p><a href="#"><strong>Yorumlar (@Model.CommentCount)</strong></a> <span>&nbsp;&bull;&nbsp;</span> @Model.PublishDate.ToString("MMM dd, yyyy") <span>&nbsp;&bull;&nbsp;</span> <a href="#"><strong>Düzenle</strong></a></p>
     </div>
     <div class="article">
-        <h2><span>3</span> Yanıtlar</h2>
+        <h2><span>Yanıtlar</span></h2>
         <div class="clr"></div>
-        <div class="comment">
-            <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-            <p>
-                <a href="#">admin</a> Says:<br />
-                April 20th, 2009 at 2:17 pm
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-        </div>
-        <div class="comment">
-            <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-            <p>
-                <a href="#">Owner</a> Says:<br />
-                April 20th, 2009 at 3:21 pm
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
-        </div>
-        <div class="comment">
-            <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-            <p>
-                <a href="#">admin</a> Says:<br />
-                April 20th, 2009 at 2:17 pm
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-        </div>
+        @foreach (var comment in ViewBag.Comments)
+        {
+            <div class="comment">
+                <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
+                <p>
+                    <a href="#">@comment.Name</a><br />
+                    @comment.PublishDate.ToString("MMMM dd, yyyy hh:mm:tt")
+                </p>
+                <p>@comment.Message</p>
+            </div>
+        }
     </div>
     <div class="article">
         <h2><span>Yorum</span> Bırak</h2>
         <div class="clr"></div>
-        <form action="#" method="post" id="leavereply">
+        <form asp-controller="Blog" asp-action="CreateComment" method="post" id="leavereply">
             <ol>
+                <input type="hidden" id="BlogId" name="BlogId" value="@Model.BlogId" />
                 <li>
-                    <label for="name">Adınız (gereklidir)</label>
-                    <input id="name" name="name" class="text" />
+                    <label for="name">Adınız (zorunlu)</label>
+                    <input id="name" name="name" class="text" required />
                 </li>
                 <li>
-                    <label for="email">Email (gereklidir)</label>
-                    <input id="email" name="email" class="text" />
-                </li>
-                <li>
-                    <label for="website">Website</label>
-                    <input id="website" name="website" class="text" />
+                    <label for="email">Email (zorunlu)</label>
+                    <input id="email" name="email" class="text" required />
                 </li>
                 <li>
                     <label for="message">Mesajınız</label>

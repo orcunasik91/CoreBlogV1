@@ -15,7 +15,7 @@
             <p>@newDescription</p>
             <p class="spec">
                 <a asp-controller="Blog" asp-action="Details" asp-route-id="@article.BlogId" class="rm">Daha Fazlası &raquo;</a>
-                <a href="#" class="com"><span>@article.LikeCount</span> Beğeniler</a>
+                @*<a href="#" class="com"><span>@article.LikeCount</span> Beğeniler</a>*@
                 <a href="#" class="com"><span>@article.ViewCount</span> Görüntüleme &nbsp;&nbsp;</a>
                 <a href="#" class="com"><span>@article.CommentCount</span> Yorumlar &nbsp;&nbsp;</a>
             </p>
