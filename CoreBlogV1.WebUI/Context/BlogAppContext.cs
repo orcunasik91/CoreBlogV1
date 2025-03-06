@@ -9,4 +9,5 @@ public class BlogAppContext : DbContext
         optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=CoreBlogV1;User ID=sa;Password=Password1;TrustServerCertificate=True;");
     }
     public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 }
