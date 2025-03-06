@@ -31,4 +31,22 @@ public class BlogController(BlogAppContext context) : Controller
         context.SaveChanges();
         return RedirectToAction("Details", new { id = comment.BlogId });
     }
+    [HttpGet]
+    public IActionResult About()
+    {
+        return View();
+    }
+    [HttpGet]
+    public IActionResult Contact()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Contact(Contact contact)
+    {
+        contact.SendDate = Convert.ToDateTime(DateTime.Now.ToString("G"));
+        context.Contacts.Add(contact);
+        context.SaveChanges();
+        return RedirectToAction("Contact");
+    }
 }
